@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>AgentQuad's GitHub Page</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(
+                135deg, 
+                #0000FF,     
+                #000000,     
+                #E6E6FA      
+            );
+            background-size: 400% 400%;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            animation: gradientFlow 15s ease infinite;
+        }
+
+        @keyframes gradientFlow {
+            0% {background-position: 0% 50%;}
+            50% {background-position: 100% 50%;}
+            100% {background-position: 0% 50%;}
+        }
+
+        .organisations {
+            display: flex;
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .org-card {
+            background: rgba(255,255,255,0.2);
+            border-radius: 10px;
+            padding: 20px;
+            width: 200px;
+            transition: transform 0.3s;
+        }
+
+        .org-card:hover {
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>AgentQuad</h1>
+        <p>Exploring the digital frontier, one project at a time.</p>
+        
+        <div class="organisations">
+            <div class="org-card">
+                <h3>SteamCraft</h3>
+                <a href="https://github.com/SteamCraft">GitHub</a>
+            </div>
+            <div class="org-card">
+                <h3>The Team One</h3>
+                <a href="https://github.com/THE-TEAM-ONE">GitHub</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
