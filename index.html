@@ -50,10 +50,14 @@
             transition: all 0.4s ease;
             position: relative;
             overflow: hidden;
+            perspective: 1000px; /* 3D effect */
         }
 
         .org-card:hover {
-            transform: translateY(-10px);
+            transform: 
+                rotateX(5deg) 
+                rotateY(5deg) 
+                translateZ(20px);
             box-shadow: 0 15px 30px rgba(0,0,0,0.5);
         }
 
@@ -83,6 +87,11 @@
             align-items: center;
             justify-content: center;
             border: 3px solid rgba(255,255,255,0.3);
+            transition: transform 0.3s ease;
+        }
+
+        .org-card:hover .org-logo {
+            transform: scale(1.1);
         }
 
         .org-logo img {
