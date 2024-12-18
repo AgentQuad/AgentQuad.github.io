@@ -7,12 +7,12 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg-primary: #E6F2FF;      /* Light Blue Background */
-            --bg-secondary: #F0F5FF;    /* Lighter Blue */
-            --text-primary: #1A1A2E;    /* Dark Blue-Black */
-            --accent-blue: #4D96FF;     /* Vibrant Blue */
-            --light-pink: #FFD1DC;      /* Light Pink */
-            --border-color: #B0C4DE;    /* Light Steel Blue */
+            --bg-primary: #0A0A1A;        /* Dark Blue-Black */
+            --bg-secondary: #121229;      /* Slightly Lighter Dark Blue */
+            --text-primary: #E6E6FA;      /* Lavender White */
+            --accent-blue: #4D96FF;       /* Vibrant Blue */
+            --accent-pink: #FF69B4;       /* Hot Pink */
+            --border-color: #1E1E3C;      /* Dark Border */
         }
 
         * {
@@ -23,10 +23,24 @@
 
         body {
             font-family: 'Inter', sans-serif;
-            background-color: var(--bg-primary);
+            background: linear-gradient(
+                135deg, 
+                var(--bg-primary), 
+                var(--bg-secondary), 
+                #0A0A2A
+            );
             color: var(--text-primary);
             line-height: 1.6;
             overflow-x: hidden;
+            min-height: 100vh;
+            background-size: 400% 400%;
+            animation: gradientBG 15s ease infinite;
+        }
+
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
         }
 
         .container {
@@ -37,6 +51,12 @@
             flex-direction: column;
             align-items: center;
             min-height: 100vh;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 3rem;
+            color: var(--accent-blue);
         }
 
         .organisations {
@@ -61,6 +81,7 @@
             border: 1px solid var(--border-color);
             position: relative;
             overflow: hidden;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.3);
         }
 
         .org-card::before {
@@ -88,14 +109,18 @@
                 perspective(1000px) 
                 rotateX(calc(var(--mouse-y-percentage) * 10deg)) 
                 rotateY(calc(var(--mouse-x-percentage) * 10deg));
-            box-shadow: 0 10px 20px rgba(77, 150, 255, 0.1);
+            box-shadow: 0 15px 30px rgba(77, 150, 255, 0.2);
         }
 
         .org-logo {
             width: 120px;
             height: 120px;
             border-radius: 50%;
-            background: linear-gradient(135deg, var(--bg-secondary), var(--light-pink));
+            background: linear-gradient(
+                135deg, 
+                var(--accent-blue), 
+                var(--accent-pink)
+            );
             margin: 0 auto 1.5rem;
             display: flex;
             align-items: center;
@@ -108,6 +133,7 @@
             height: 80%;
             border-radius: 50%;
             object-fit: cover;
+            filter: grayscale(20%) brightness(1.1);
         }
 
         .org-title {
@@ -119,10 +145,23 @@
 
         .org-link {
             display: inline-block;
-            background-color: var(--light-pink);
+            background-color: var(--accent-pink);
             color: var(--text-primary);
             padding: 0.75rem 1.5rem;
             border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .org-link:hover {
+            background-color: var(--accent-blue);
+            transform: scale(1.05);
+        }
+
+        @media (max-width: 768px) {
+            .organisations {
+                flex-direction: column;
+                align-items: center;
+            }
         }
     </style>
 </head>
@@ -130,7 +169,7 @@
     <div class="container">
         <div class="header">
             <h1>AgentQuad</h1>
-            <p>Crafting digital experiences, one line of code at a time</p>
+            <p>Crafting digital experiences in the dark realm</p>
         </div>
         
         <div class="organisations">
