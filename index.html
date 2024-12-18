@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AgentQuad | Developer Portfolio</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
@@ -10,6 +11,7 @@
             --bg-secondary: #161B22;
             --text-primary: #C9D1D9;
             --accent-blue: #58A6FF;
+            --border-color: #30363D;
         }
 
         * {
@@ -23,6 +25,7 @@
             background-color: var(--bg-primary);
             color: var(--text-primary);
             line-height: 1.6;
+            overflow-x: hidden;
         }
 
         .container {
@@ -38,40 +41,145 @@
         .header {
             text-align: center;
             margin-bottom: 3rem;
+            animation: fadeIn 1s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
         .header h1 {
-            font-size: 3rem;
+            font-size: 3.5rem;
             color: var(--accent-blue);
             margin-bottom: 0.5rem;
+            background: linear-gradient(45deg, var(--accent-blue), #ffffff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
 
         .organisations {
             display: flex;
             gap: 2rem;
             justify-content: center;
+            perspective: 1000px;
         }
 
         .org-card {
             background-color: var(--bg-secondary);
-            border-radius: 10px;
+            border-radius: 12px;
             padding: 1.5rem;
-            width: 300px;
+            width: 320px;
             text-align: center;
-            transition: transform 0.3s ease;
-            border: 1px solid #30363D;
+            transition: all 0.4s ease;
+            border: 1px solid var(--border-color);
+            transform-style: preserve-3d;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .org-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(
+                45deg, 
+                transparent, 
+                rgba(88, 166, 255, 0.1), 
+                transparent
+            );
+            transform: rotate(-45deg);
+            z-index: 1;
         }
 
         .org-card:hover {
-            transform: scale(1.05);
-            box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+            transform: 
+                scale(1.05) 
+                rotateX(5deg) 
+                rotateY(5deg);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.3);
         }
 
         .org-logo {
-            width: 100px;
-            height: 100px;
+            width: 120px;
+            height: 120px;
             border-radius: 50%;
-            background-color: #30363D;
-            margin: 0 auto 1rem;
+            background: linear-gradient(135deg, #161B22, #30363D);
+            margin: 0 auto 1.5rem;
             display: flex;
             align-items: center;
+            justify-content: center;
+            border: 3px solid var(--border-color);
+            transform: translateZ(50px);
+        }
+
+        .org-logo img {
+            width: 80%;
+            height: 80%;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        .org-title {
+            font-size: 1.8rem;
+            color: var(--accent-blue);
+            margin-bottom: 1rem;
+            letter-spacing: -0.5px;
+        }
+
+        .org-link {
+            display: inline-block;
+            background-color: #21262D;
+            color: var(--accent-blue);
+            padding: 0.75rem 1.5rem;
+            text-decoration: none;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .org-link:hover {
+            background-color: #30363D;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(88, 166, 255, 0.2);
+        }
+
+        @media (max-width: 768px) {
+            .organisations {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>AgentQuad</h1>
+            <p>Crafting digital experiences, one line of code at a time</p>
+        </div>
+        
+        <div class="organisations">
+            <div class="org-card">
+                <div class="org-logo">
+                    <img src="https://via.placeholder.com/120" alt="SteamCraft Logo">
+                </div>
+                <h3 class="org-title">SteamCraft</h3>
+                <a href="https://github.com/SteamCraft" class="org-link">GitHub Profile</a>
+            </div>
+            
+            <div class="org-card">
+                <div class="org-logo">
+                    <img src="https://via.placeholder.com/120" alt="The Team One Logo">
+                </div>
+                <h3 class="org-title">The Team One</h3>
+                <a href="https://github.com/THE-TEAM-ONE" class="org-link">GitHub Profile</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
